@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_commerce/screens/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatefulWidget {
+
   @override
   _ProfileState createState() => _ProfileState();
 }
@@ -25,9 +27,14 @@ class _ProfileState extends State<Profile> {
         TextFormField(
           controller: _ageController = TextEditingController(text: data['age']),
         ),
-        ElevatedButton(onPressed: ()=>updateData(), child: Text("Update"))
+        ElevatedButton(onPressed: ()=>updateData(), child: Text("Update")),
+        ElevatedButton(onPressed: ()=>signOut(), child: Text("Sign out"))
       ],
     );
+  }
+  signOut()async{
+    await FirebaseAuth.instance.signOut();
+    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> LoginScreen()));
   }
 
   updateData(){
@@ -52,7 +59,7 @@ class _ProfileState extends State<Profile> {
           builder: (BuildContext context, AsyncSnapshot snapshot){
             var data = snapshot.data;
             if(data==null){
-              return Center(child: CircularProgressIndicator(),);
+              return const Center(child: CircularProgressIndicator(),);
             }
             return setDataToTextField(data);
           },

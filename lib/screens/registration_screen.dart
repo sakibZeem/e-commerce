@@ -13,7 +13,6 @@ class RegistrationScreen extends StatefulWidget {
   @override
   State<RegistrationScreen> createState() => _RegistrationScreenState();
 
-  // _RegistrationScreenState createState() => _RegistrationScreenState();
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
@@ -65,7 +64,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    IconButton(
+                    const IconButton(
                       onPressed: null,
                       icon: Icon(
                         Icons.light,
@@ -106,7 +105,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               fontSize: 22.sp, color: AppColors.deep_orange),
                         ),
                         Text(
-                          "Glad to see you back my buddy.",
+                          "Glad to see you back",
                           style: TextStyle(
                             fontSize: 14.sp,
                             color: Color(0xFFBBBBBB),
@@ -180,7 +179,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 controller: _passwordController,
                                 obscureText: _obscureText,
                                 decoration: InputDecoration(
-                                  hintText: "password must be 6 character",
+                                  hintText: "Password must be 6 character",
                                   hintStyle: TextStyle(
                                     fontSize: 14.sp,
                                     color: Color(0xFF414041),

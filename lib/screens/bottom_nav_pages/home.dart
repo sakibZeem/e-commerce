@@ -10,15 +10,17 @@ import '../product_details_screen.dart';
 import '../search_screen.dart';
 
 class Home extends StatefulWidget {
+  const Home({super.key});
+
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  List<String> _carouselImages = [];
+  final List<String> _carouselImages = [];
   var _dotPosition = 0;
-  List _products = [];
-  var _firestoreInstance = FirebaseFirestore.instance;
+  final List _products = [];
+  final _firestoreInstance = FirebaseFirestore.instance;
 
   fetchCarouselImages() async {
     QuerySnapshot qn =
@@ -71,10 +73,10 @@ class _HomeState extends State<Home> {
                 readOnly: true,
                 decoration: InputDecoration(
                   fillColor: Colors.white,
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(0)),
                       borderSide: BorderSide(color: Colors.blue)),
-                  enabledBorder: OutlineInputBorder(
+                  enabledBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(0)),
                       borderSide: BorderSide(color: Colors.grey)),
                   hintText: "Search products here",
@@ -88,7 +90,7 @@ class _HomeState extends State<Home> {
               height: 10.h,
             ),
             AspectRatio(
-              aspectRatio: 3.5,
+              aspectRatio: 2,
               child: CarouselSlider(
                   items: _carouselImages
                       .map((item) => Padding(
@@ -102,7 +104,7 @@ class _HomeState extends State<Home> {
                           ))
                       .toList(),
                   options: CarouselOptions(
-                      autoPlay: false,
+                      autoPlay: true,
                       enlargeCenterPage: true,
                       viewportFraction: 0.8,
                       enlargeStrategy: CenterPageEnlargeStrategy.height,
@@ -130,6 +132,7 @@ class _HomeState extends State<Home> {
             SizedBox(
               height: 15.h,
             ),
+            const Text("All Products", style: TextStyle(color: AppColors.deep_orange),),
             Expanded(
               child: GridView.builder(
                   scrollDirection: Axis.horizontal,
@@ -144,15 +147,16 @@ class _HomeState extends State<Home> {
                         child: Column(
                           children: [
                             AspectRatio(
-                                aspectRatio: 2,
+                                aspectRatio: 1.5,
                                 child: Container(
-                                    color: Colors.yellow,
+                                    color: Colors.white,
                                     child: Image.network(
                                       _products[index]["product-img"][0],
                                     ))),
+                            SizedBox(height: 10,),
                             Text("${_products[index]["product-name"]}"),
                             Text(
-                                "${_products[index]["product-price"].toString()}"),
+                                "৳ ${_products[index]["product-price"].toString()}" ,style: TextStyle(color: AppColors.deep_orange),),
                           ],
                         ),
                       ),

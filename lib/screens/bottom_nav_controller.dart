@@ -25,7 +25,7 @@ class _BottomNavControllerState extends State<BottomNavController> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text(
+        title: const Text(
           "E-Commerce",
           style: TextStyle(color: Colors.black),
         ),
@@ -39,8 +39,8 @@ class _BottomNavControllerState extends State<BottomNavController> {
         unselectedItemColor: Colors.grey,
         currentIndex: _currentIndex,
         selectedLabelStyle:
-            TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        items: [
+            const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: "Home",
